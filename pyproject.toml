@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "my-app"
+version = "0.1.0"
+description = ""
+authors = ["Pierre-E Mercier <p.mercier@betclicgroup.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.11"
+click = "~8"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "~2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.'MASTER']
+ignore-path = "test/" # Ignore all tests
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = [
+    "C0114", # missing-module-docstring
+    "C0115", # missing-class-docstring
+    "C0116", # missing-function-docstring
+    "W1203", # logging-fstring-interpolation
+    "C0301", # line-too-long
+    "R0903", # too-few-public-methods
+    "R1710", # inconsistent-return-statements
+    "W0718", # broad-exception-caught
+    "I1101", # c-extension-no-member
+]
+
+[tool.pylint.'FORMAT']
+max-line-length = 120 # Maximum number of characters on a single line.
+max-args = 6
+
+[tool.pylint.'design']
+max-locals = 20
